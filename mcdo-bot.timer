@@ -1,0 +1,10 @@
+[Unit]
+Description=Lancement quotidien du Bot McDo a 16h30 (Heure flottante)
+
+[Timer]
+OnCalendar=*-*-* 16:30:00
+RandomizedDelaySec=25m
+Persistent=true
+
+[Install]
+WantedBy=timers.target

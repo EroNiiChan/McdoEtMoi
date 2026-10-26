@@ -1,0 +1,72 @@
+====================================================
+           BOT MCDO - GUIDE RAPIDE D'UTILISATION
+====================================================
+
+Ce bot automatise le remplissage des questionnaires de satisfaction 
+Hello McDo (Medallia) avec simulation de comportements humains 
+(iPhone, Android, PC), horaires de tickets réalistes et commentaires variés.
+
+100% PORTABLE : Fonctionne à l'identique sous Windows, Linux et Docker.
+
+----------------------------------------------------
+1. OPTIONS & CONFIGURATION (DANS script.py)
+----------------------------------------------------
+Ouvrez le fichier "script.py" avec le Bloc-notes :
+
+- Numéro du restaurant :
+   ID_RESTO = "XXXX"   <--- Mettez votre code resto à 4 chiffres
+
+- Alertes Discord sur smartphone (Optionnel) :
+   DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/..."
+   DISCORD_ADMIN_PING = "@here"  <--- Pinge les admins en cas d'incident
+
+- Protection anti-anomalie :
+   Chaque formulaire dure automatiquement entre 68 et 96 secondes
+   pour être validé par les algorithmes de contrôle Medallia.
+
+- Le nombre de formulaires s'adapte automatiquement :
+   * Lundi et Mardi : 70 à 90 avis (jours calmes)
+   * Mercredi et Jeudi : 85 à 105 avis
+   * Vendredi, Samedi, Dimanche : 110 à 130 avis (gros rushs)
+
+----------------------------------------------------
+2. UTILISATION SUR WINDOWS (1-CLIC)
+----------------------------------------------------
+Prérequis : Avoir Python installé (avec "Add to PATH" coché).
+Google Chrome doit être installé.
+
+Double-cliquez simplement sur :
+   "lancer_mcdo.bat"
+
+Le fichier .bat vérifie et installe automatiquement Selenium s'il 
+n'est pas encore présent, puis lance le bot. Aucun pilote externe 
+n'est requis (Selenium Manager gère Chrome tout seul).
+
+----------------------------------------------------
+3. UTILISATION SUR LINUX / DEBIAN / SERVEUR
+----------------------------------------------------
+1. Installer Chrome et Chromedriver :
+   apt update && apt install -y chromium chromium-driver
+2. Créer un venv et installer Selenium :
+   python3 -m venv venv && ./venv/bin/pip install selenium
+3. Lancer directement :
+   ./venv/bin/python script.py
+
+Pour automatisation via Systemd à 16h30 :
+   Utiliser les fichiers mcdo-bot.service et mcdo-bot.timer fournis.
+
+----------------------------------------------------
+4. UTILISATION AVEC DOCKER
+----------------------------------------------------
+Si vous avez Docker installé :
+   docker compose up --build -d
+
+----------------------------------------------------
+5. EN CAS D'ERREUR OU DE BLOCAGE
+----------------------------------------------------
+- Tous les passages sont notés dans : "historique_envois.log"
+- Le bot intègre un réessai automatique (1 retry immédiat) avant 
+  de déclarer un échec.
+- Si une erreur persiste, une capture d'écran est enregistrée dans 
+  "erreurs_screenshots" et une alerte Discord avec ping Admin est émise.
+====================================================

@@ -1,0 +1,11 @@
+services:
+  mcdo-bot:
+    build: .
+    container_name: mcdo-bot
+    restart: "no"
+    shm_size: 512mb
+    volumes:
+      - ./historique_envois.log:/app/historique_envois.log
+      - ./erreurs_screenshots:/app/erreurs_screenshots
+    environment:
+      - TZ=Europe/Paris

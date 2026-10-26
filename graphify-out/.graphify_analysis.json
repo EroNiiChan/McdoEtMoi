@@ -1,0 +1,127 @@
+{
+  "communities": {
+    "0": [
+      "check_selecteurs_explorer_chemin",
+      "script_cliquer_element",
+      "script_pause_humaine",
+      "script_rationale_104",
+      "script_rationale_108",
+      "script_rationale_117",
+      "script_remplir_champ",
+      "time"
+    ],
+    "1": [
+      "com",
+      "com_generer_commentaire",
+      "random",
+      "script_generer_horaire_ticket",
+      "script_generer_options_furtives",
+      "script_rationale_128",
+      "script_rationale_150"
+    ],
+    "2": [
+      "datetime",
+      "logging",
+      "os",
+      "script",
+      "selenium_webdriver_support",
+      "selenium_webdriver_support_ui",
+      "shutil"
+    ],
+    "3": [
+      "check_selecteurs",
+      "selenium",
+      "selenium_webdriver_chrome_options",
+      "selenium_webdriver_chrome_service",
+      "selenium_webdriver_common_by",
+      "webdriver_manager_chrome"
+    ],
+    "4": [
+      "platform",
+      "script_nettoyer_processus_fantomes",
+      "script_rationale_186",
+      "subprocess"
+    ],
+    "5": [
+      "lanceur",
+      "lanceur_sh__entry"
+    ]
+  },
+  "cohesion": {
+    "0": 0.2857142857142857,
+    "1": 0.3333333333333333,
+    "2": 0.2857142857142857,
+    "3": 0.3333333333333333,
+    "4": 0.5,
+    "5": 1.0
+  },
+  "gods": [
+    {
+      "id": "script_pause_humaine",
+      "label": "pause_humaine()",
+      "degree": 6
+    },
+    {
+      "id": "script_remplir_champ",
+      "label": "remplir_champ()",
+      "degree": 5
+    },
+    {
+      "id": "script_nettoyer_processus_fantomes",
+      "label": "nettoyer_processus_fantomes()",
+      "degree": 4
+    },
+    {
+      "id": "com_generer_commentaire",
+      "label": "generer_commentaire()",
+      "degree": 3
+    },
+    {
+      "id": "script_cliquer_element",
+      "label": "cliquer_element()",
+      "degree": 3
+    },
+    {
+      "id": "script_generer_options_furtives",
+      "label": "generer_options_furtives()",
+      "degree": 3
+    },
+    {
+      "id": "script_generer_horaire_ticket",
+      "label": "generer_horaire_ticket()",
+      "degree": 3
+    },
+    {
+      "id": "check_selecteurs_explorer_chemin",
+      "label": "explorer_chemin()",
+      "degree": 2
+    },
+    {
+      "id": "lanceur_sh__entry",
+      "label": "lanceur.sh script",
+      "degree": 2
+    },
+    {
+      "id": "script_rationale_104",
+      "label": "Pause al\u00e9atoire avec d\u00e9cimales pour casser le rythme robotique",
+      "degree": 1
+    }
+  ],
+  "surprises": [
+    {
+      "source": "pause_humaine()",
+      "target": "random",
+      "source_files": [
+        "script.py",
+        ""
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "note": "Bridges community 0 \u2192 community 1"
+    }
+  ],
+  "tokens": {
+    "input": 0,
+    "output": 0
+  }
+}
