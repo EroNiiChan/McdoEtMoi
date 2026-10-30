@@ -1,17 +1,17 @@
-# Graph Report - McdoEtMoi  (2026-10-27)
+# Graph Report - McdoEtMoi  (2026-10-30)
 
 ## Corpus Check
-- 5 files · ~3,723 words
+- 5 files · ~3,691 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 7 file(s) not represented in the graph (top: (none) 2, .bat 2, .zip 1)
 
 ## Summary
 - 54 nodes · 79 edges · 9 communities (3 shown, 6 thin omitted)
-- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 1 edges (avg confidence: 0.5)
+- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 1 edges (avg confidence: 0.55)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `362b5bb9`
+- Built from commit: `82cf2352`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -32,10 +32,10 @@
 4. `purger_anciens_screenshots()` - 4 edges
 5. `cliquer_element()` - 4 edges
 6. `nettoyer_processus_fantomes()` - 4 edges
-7. `generer_commentaire()` - 3 edges
-8. `calculer_nombre_passages()` - 3 edges
-9. `notifier_discord()` - 3 edges
-10. `renouveler_ip()` - 3 edges
+7. `calculer_nombre_passages()` - 3 edges
+8. `notifier_discord()` - 3 edges
+9. `renouveler_ip()` - 3 edges
+10. `generer_options_furtives()` - 3 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `purger_anciens_screenshots()` --calls--> `time`  [EXTRACTED]
