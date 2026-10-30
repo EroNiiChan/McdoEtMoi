@@ -283,19 +283,10 @@ def generer_options_furtives():
     options.add_argument("--renderer-process-limit=1")
     options.add_argument("--js-flags=--max-old-space-size=128")
     
-    # Proxy tournant optionnel ou Tor local automatique
+    # Proxy tournant optionnel (vide par défaut = connexion directe ultra-rapide)
     if PROXIES:
         proxy_choisi = random.choice(PROXIES)
         options.add_argument(f"--proxy-server={proxy_choisi}")
-    else:
-        try:
-            import socket
-            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-                s.settimeout(0.3)
-                if s.connect_ex(("127.0.0.1", 9050)) == 0:
-                    options.add_argument("--proxy-server=socks5://127.0.0.1:9050")
-        except Exception:
-            pass
 
     # Camouflage anti-bot Selenium
     options.add_argument("--disable-blink-features=AutomationControlled")
@@ -412,7 +403,7 @@ for i in range(NOMBRE_DE_REPETITIONS):
             else:
                 # Selenium Manager natif (gère automatiquement Chrome sous Windows et Mac sans configuration)
                 driver = webdriver.Chrome(options=chrome_options)
-            driver.set_page_load_timeout(60)
+            driver.set_page_load_timeout(25)
             t_debut_passage = time.time()
             duree_cible_sondage = random.uniform(68.0, 96.0) # Toujours > 1 min pour éviter le flag anomalie
             
@@ -426,16 +417,14 @@ for i in range(NOMBRE_DE_REPETITIONS):
     
             # 1. Accès au site
             logging.info("1. Connexion au site McDonald's...")
-            # 1. Accès au site avec auto-retry immédiat si le relais Tor est lent
             for tentative_page in range(2):
                 try:
                     driver.get("https://survey2.medallia.eu/?hellomcdo")
-                    WebDriverWait(driver, 12).until(EC.presence_of_element_located((By.ID, "buttonBegin")))
+                    WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.ID, "buttonBegin")))
                     break
                 except Exception:
                     if tentative_page == 0:
-                        logging.warning("   -> Page lente à charger, renouvellement IP et rechargement...")
-                        renouveler_ip()
+                        logging.warning("   -> Page lente à répondre, nouvel essai immédiat...")
                         time.sleep(2)
                     else:
                         raise
